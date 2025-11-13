@@ -7,3 +7,4 @@ local.sh
 logs/
 results/
 gcp-key.json
+data/
