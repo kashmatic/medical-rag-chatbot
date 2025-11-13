@@ -1,22 +1,22 @@
 pipeline {
-    agent any
+  agent any
 
-    // environment {
-    //     AWS_REGION = 'us-east-1'
-    //     ECR_REPO = 'my-repo'
-    //     IMAGE_TAG = 'latest'
-    //     SERVICE_NAME = 'llmops-medical-service'
-    // }
+  // environment {
+  //     AWS_REGION = 'us-east-1'
+  //     ECR_REPO = 'my-repo'
+  //     IMAGE_TAG = 'latest'
+  //     SERVICE_NAME = 'llmops-medical-service'
+  // }
 
-    stages {
-        stage('Clone GitHub Repo') {
-            steps {
-                script {
-                    echo 'Cloning GitHub repo to Jenkins...'
-                    checkout scmGit(branches: [[name: '*/main']], extensions: [], userRemoteConfigs: [[credentialsId: 'github-token', url: 'https://github.com/data-guru0/RAG-MEDICAL-CHATBOT.git']])
-                }
-            }
+  stages {
+    stage('Clone GitHub Repo') {
+      steps {
+        script {
+          echo 'Cloning GitHub repo to Jenkins...'
+          checkout scmGit(branches: [[name: '*/main']], extensions: [], userRemoteConfigs: [[credentialsId: 'github_creds', url: 'https://github.com/kashmatic/medical-rag-chatbot.git']])
         }
+      }
+    }
 
         // stage('Build, Scan, and Push Docker Image to ECR') {
         //     steps {
@@ -60,5 +60,5 @@ pipeline {
         //         }
         //     }
         // }
-    }
+  }
 }
